@@ -1,8 +1,8 @@
 [Unit]
 Description=OTRS: Open-source Ticket Request System, Copyright (C) 2001-2016 OTRS AG
 Documentation=https://otrs.github.io/doc/manual/admin/stable/en/html/
-Requires=crond.service httpd.service mariadb.service dovecot.service
-After=crond.service httpd.service mariadb.service dovecot.service
+Requires=crond.service httpd.service mariadb.service dovecot.service postfix.service
+After=crond.service httpd.service mariadb.service dovecot.service postfix.service
 
 [Service]
 Type=oneshot
