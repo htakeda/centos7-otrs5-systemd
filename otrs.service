@@ -1,0 +1,18 @@
+[Unit]
+Description=OTRS: Open-source Ticket Request System, Copyright (C) 2001-2016 OTRS AG
+Documentation=https://otrs.github.io/doc/manual/admin/stable/en/html/
+Requires=crond.service httpd.service mariadb.service dovecot.service
+After=crond.service httpd.service mariadb.service dovecot.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/otrs/bin/otrs.Daemon.pl start
+ExecStart=/opt/otrs/bin/Cron.sh start
+ExecStop=/opt/otrs/bin/Cron.sh stop
+ExecStop=/opt/otrs/bin/otrs.Daemon.pl stop
+User=otrs
+Group=apache
+
+[Install]
+WantedBy=multi-user.target
